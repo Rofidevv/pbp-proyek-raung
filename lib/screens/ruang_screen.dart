@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data_contoh.dart';
 import '../models.dart';
+import '../widgets/label_tingkat.dart';
 import 'detail_laporan_screen.dart';
 import 'form_lapor_screen.dart';
 
@@ -48,7 +49,7 @@ class _RuangScreenState extends State<RuangScreen> {
               title: Text(_aktif.kode),
               subtitle: Text('${_aktif.gedung}\n${_aktif.jadwalPakai}'),
               isThreeLine: true,
-              trailing: Text(_aktif.statusKelayakan.label),
+              trailing: LabelTingkat(_aktif.statusKelayakan.label, tingkat: _aktif.statusKelayakan.index),
             ),
           ),
           Expanded(
@@ -59,7 +60,8 @@ class _RuangScreenState extends State<RuangScreen> {
                       for (final l in terbuka)
                         ListTile(
                           title: Text(l.judul),
-                          subtitle: Text('${l.status.label} · ${l.urgensi.label} · ${l.dukungan} dukungan'),
+                          subtitle: Text('${l.status.label} · ${l.dukungan} dukungan'),
+                          trailing: LabelTingkat(l.urgensi.label, tingkat: l.urgensi.index),
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(builder: (_) => DetailLaporanScreen(laporan: l)),

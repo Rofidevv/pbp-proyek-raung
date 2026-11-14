@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data_contoh.dart';
 import '../models.dart';
+import '../widgets/label_tingkat.dart';
 import 'detail_laporan_screen.dart';
 
 class DaftarLaporanScreen extends StatefulWidget {
@@ -20,7 +21,8 @@ class _DaftarLaporanScreenState extends State<DaftarLaporanScreen> {
         for (final l in laporanContoh)
           ListTile(
             title: Text(l.judul),
-            subtitle: Text('${l.ruang} · ${l.status.label} · ${l.urgensi.label}'),
+            subtitle: Text('${l.ruang} · ${l.status.label}'),
+            trailing: LabelTingkat(l.urgensi.label, tingkat: l.urgensi.index),
             selected: berdampingan && l == _terpilih,
             onTap: berdampingan
                 ? () => setState(() => _terpilih = l)

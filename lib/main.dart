@@ -14,8 +14,28 @@ class LaporFasApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'LaporFas',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo)),
+      theme: _tema(Brightness.light),
+      darkTheme: _tema(Brightness.dark),
       home: const Beranda(),
+    );
+  }
+
+  // Netral; warna hanya untuk tingkat urgensi/kelayakan.
+  static ThemeData _tema(Brightness b) {
+    final kuning = ColorScheme.fromSeed(
+      seedColor: Colors.amber,
+      brightness: b,
+      dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
+    );
+    return ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: Colors.blueGrey,
+        brightness: b,
+        dynamicSchemeVariant: DynamicSchemeVariant.neutral,
+      ).copyWith(
+        tertiaryContainer: kuning.primaryContainer,
+        onTertiaryContainer: kuning.onPrimaryContainer,
+      ),
     );
   }
 }

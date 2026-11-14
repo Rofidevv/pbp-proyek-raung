@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data_contoh.dart';
 import '../models.dart';
+import '../widgets/label_tingkat.dart';
 import 'detail_laporan_screen.dart';
 
 class DasborSarprasScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class DasborSarprasScreen extends StatelessWidget {
                   cells: [
                     DataCell(Text(l.ruang)),
                     DataCell(Text(l.judul)),
-                    DataCell(Text(l.urgensi.label)),
+                    DataCell(LabelTingkat(l.urgensi.label, tingkat: l.urgensi.index)),
                     DataCell(Text('${l.dukungan}')),
                     DataCell(Text(l.status.label)),
                   ],

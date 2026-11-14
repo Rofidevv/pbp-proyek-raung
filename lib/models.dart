@@ -18,6 +18,7 @@ enum Urgensi {
   final String label;
 }
 
+// Urutan dari layak ke tidak layak; index dipakai LabelTingkat.
 enum KelayakanRuang {
   layak('Layak'),
   adaLaporanTerbuka('Ada laporan terbuka'),
