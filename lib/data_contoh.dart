@@ -1,0 +1,80 @@
+import 'models.dart';
+
+final ruangContoh = <Ruang>[
+  const Ruang(
+    kode: 'VL 4A',
+    gedung: 'Gedung V',
+    jadwalPakai: 'Senin 08.00-09.40; Rabu 13.00-14.40',
+    statusKelayakan: KelayakanRuang.adaLaporanTerbuka,
+  ),
+  const Ruang(
+    kode: 'VL 4B',
+    gedung: 'Gedung V',
+    jadwalPakai: 'Selasa 10.00-11.40',
+    statusKelayakan: KelayakanRuang.layak,
+  ),
+  const Ruang(
+    kode: 'VL 4C',
+    gedung: 'Gedung V',
+    jadwalPakai: 'Kamis 07.00-09.30',
+    statusKelayakan: KelayakanRuang.tidakLayak,
+  ),
+];
+
+final laporanContoh = <Laporan>[
+  Laporan(
+    id: 12,
+    ruang: 'VL 4A',
+    judul: 'LCD proyektor tidak bisa dimatikan',
+    deskripsi: 'Tombol power tidak merespons sejak kuliah pertama.',
+    status: StatusLaporan.menunggu,
+    urgensi: Urgensi.mendesak,
+    nimPelapor: '243401009',
+    dukungan: 7,
+    dibuatPada: DateTime(2026, 10, 24, 9, 15),
+  ),
+  Laporan(
+    id: 13,
+    ruang: 'VL 4A',
+    judul: 'AC tidak bisa swing',
+    deskripsi: 'Arah angin AC macet ke satu sisi.',
+    status: StatusLaporan.diproses,
+    urgensi: Urgensi.sedang,
+    nimPelapor: '243401009',
+    dukungan: 3,
+    dibuatPada: DateTime(2026, 10, 22, 10, 0),
+  ),
+  Laporan(
+    id: 14,
+    ruang: 'VL 4C',
+    judul: 'Kursi patah 4 buah',
+    deskripsi: 'Empat kursi barisan belakang patah kakinya.',
+    status: StatusLaporan.menunggu,
+    urgensi: Urgensi.rendah,
+    nimPelapor: '243401009',
+    dukungan: 1,
+    dibuatPada: DateTime(2026, 10, 20, 8, 30),
+  ),
+  Laporan(
+    id: 15,
+    ruang: 'VL 4C',
+    judul: 'Lampu depan mati',
+    deskripsi: 'Dua lampu dekat papan tulis mati.',
+    status: StatusLaporan.menunggu,
+    urgensi: Urgensi.mendesak,
+    nimPelapor: '243401009',
+    dukungan: 5,
+    dibuatPada: DateTime(2026, 10, 23, 13, 45),
+  ),
+  Laporan(
+    id: 11,
+    ruang: 'VL 4B',
+    judul: 'Stop kontak longgar',
+    deskripsi: 'Colokan di meja dosen mudah lepas.',
+    status: StatusLaporan.ditutup,
+    urgensi: Urgensi.rendah,
+    nimPelapor: '243401009',
+    dukungan: 2,
+    dibuatPada: DateTime(2026, 10, 10, 11, 0),
+  ),
+];
