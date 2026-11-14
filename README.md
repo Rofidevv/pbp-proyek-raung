@@ -36,7 +36,8 @@ Platform: **Android** untuk mahasiswa di depan ruang (QR, kamera, kabar status);
 
 **Batasan (pagu):** 3 entitas dan 6 layar.
 
-- Entitas: **Laporan** (judul, ruang, foto, status, urgensi), **Ruang** (kodeQR, gedung, jadwalPakai, statusKelayakan), **TindakLanjut** (idLaporan, catatanSarpras, tanggal, ditutupOlehPelapor).
+- Entitas: **Laporan** (judul, deskripsi, ruang, foto, status, urgensi, nimPelapor, pendukung), **Ruang** (kode, gedung, jadwalPakai, statusKelayakan), **TindakLanjut** (idLaporan, catatanSarpras, tanggal, ditutupOlehPelapor).
+- `pendukung` adalah daftar NIM yang menekan "saya juga mengalami". Daftar ini disimpan di server untuk menolak dukungan ganda, jadi tidak perlu entitas keempat. Respons API hanya memuat jumlahnya (`dukungan`) supaya NIM pendukung tidak terbuka di web publik. `kode` ruang adalah isi QR di pintu.
 - Layar: (1) Pindai QR/Detail Ruang, (2) Daftar Laporan, (3) Detail Laporan, (4) Form Lapor, (5) Dasbor Sarpras, (6) Status Publik Web.
 - Backend FastAPI. Frontend Flutter. Tidak ada autentikasi penuh, notifikasi push, atau fitur di luar enam layar.
 
@@ -94,11 +95,13 @@ Product backlog berisi 13 user story (R-01 sampai R-13) dan kartu Sprint 1 (S1-0
 
 Dua jenis data yang berelasi: **Ruang** (1) -> **Laporan** (banyak). Satu ruang punya banyak laporan; setiap laporan menunjuk satu ruang lewat `ruang`.
 
+Nama field JSON memakai snake_case (`jadwal_pakai`), model Dart memakai camelCase (`jadwalPakai`). Nilai tetap: `status` = Menunggu | Diproses | Selesai | Ditutup; `urgensi` = Rendah | Sedang | Mendesak; `status_kelayakan` = layak | ada_laporan_terbuka | tidak_layak.
+
 Contoh JSON satu ruang:
 
 ```json
 {
-  "kode": "VL 5J",
+  "kode": "VL 4A",
   "gedung": "Gedung V",
   "jadwal_pakai": "Senin 08.00-09.40; Rabu 13.00-14.40",
   "status_kelayakan": "ada_laporan_terbuka"
@@ -110,12 +113,13 @@ Contoh JSON satu laporan:
 ```json
 {
   "id": 12,
-  "ruang": "VL 5J",
+  "ruang": "VL 4A",
   "judul": "LCD proyektor tidak bisa dimatikan",
   "deskripsi": "Tombol power tidak merespons sejak kuliah pertama.",
   "foto_url": "/foto/12.jpg",
   "status": "Menunggu",
   "urgensi": "Mendesak",
+  "nim_pelapor": "243401009",
   "dukungan": 7,
   "dibuat_pada": "2026-10-24T09:15:00+07:00"
 }
@@ -125,8 +129,8 @@ Tiga endpoint pertama:
 
 | Endpoint | Kegunaan | Contoh respons |
 | --- | --- | --- |
-| `GET /laporan` | Daftar semua laporan | `[{"id": 12, "ruang": "VL 5J", "status": "Menunggu"}]` |
-| `POST /laporan` | Membuat laporan baru | `{"id": 13, "ruang": "VL 5J", "status": "Menunggu"}` |
+| `GET /laporan` | Daftar semua laporan | `[{"id": 12, "ruang": "VL 4A", "status": "Menunggu"}]` |
+| `POST /laporan` | Membuat laporan baru | `{"id": 13, "ruang": "VL 4A", "status": "Menunggu"}` |
 | `GET /laporan/{id}` | Satu laporan lengkap | JSON laporan di atas |
 
 ## 10. Definition of Done
