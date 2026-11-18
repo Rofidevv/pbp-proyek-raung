@@ -1,6 +1,6 @@
 # Backend LaporFas
 
-API FastAPI untuk laporan kerusakan ruang kelas LaporFas. Alamat publik: ALAMAT_PUBLIK, dokumentasi interaktif di ALAMAT_PUBLIK/docs.
+API FastAPI untuk laporan kerusakan ruang kelas LaporFas. Alamat publik: <https://pbp-proyek-raung.onrender.com>, dokumentasi interaktif di <https://pbp-proyek-raung.onrender.com/docs>.
 
 ## Stack
 
