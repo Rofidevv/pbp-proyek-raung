@@ -28,6 +28,7 @@ Platform: **Android** untuk mahasiswa di depan ruang (QR, kamera, kabar status);
 
 1. **CRUD daftar-detail-form** - mahasiswa menambah, melihat daftar dan detail, mengubah, dan menghapus laporan kerusakannya sendiri pada data Laporan.
 2. **API backend (FastAPI)** - `GET /laporan`, `POST /laporan`, `GET /laporan/{id}`, `PUT /laporan/{id}`, `PATCH /laporan/{id}/status`, `DELETE /laporan/{id}`; endpoint pendukung: `GET /ruang/{kode}/laporan`, `POST /laporan/{id}/dukungan`, `POST /laporan/{id}/tindak-lanjut`, `POST /laporan/{id}/tutup`.
+   Kode, cara menjalankan, dan tabel endpoint lengkap ada di [`backend/README.md`](backend/README.md).
 3. **Layout adaptif** - di HP daftar satu kolom dengan bottom navigation; di layar lebar dua kolom daftar-detail berdampingan; desktop sarpras berupa tabel antrean.
 4. **State lintas layar** - filter status (Menunggu/Diproses/Selesai/Ditutup), filter urgensi, dan ruang aktif hasil pindai QR dipakai bersama di layar Daftar, Detail Ruang, dan Status.
 5. **Penyimpanan lokal** - cache daftar terakhir, pilihan filter, dan antrean lapor luring yang dikirim ulang saat daring.
